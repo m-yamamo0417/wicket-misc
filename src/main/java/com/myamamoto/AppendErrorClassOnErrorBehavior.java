@@ -33,6 +33,12 @@ public class AppendErrorClassOnErrorBehavior
     }
 
     public AppendErrorClassOnErrorBehavior(String errorClass) {
+	if(null == errorClass) {
+	    throw new NullPointerException("errorClass is null");
+	}
+	if(errorClass.isEmpty()){
+	    throw new IllegalArgumentException("errorClass is empty");
+	}
 	this.errorClass = errorClass;
 	this.errorClassWithComma = ", " + errorClass;
     }

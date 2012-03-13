@@ -41,6 +41,16 @@ public class AppendErrorClassOnErrorBehaviorTest {
 	this.componentTag = new ComponentTag(new XmlTag());
     }
 
+    @Test(expected = NullPointerException.class)
+    public void testConstructWithNull() {
+	new AppendErrorClassOnErrorBehavior(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testConstructWithEmptyString() {
+	new AppendErrorClassOnErrorBehavior("");
+    }
+
     @Test
     public void testOnError() {
 	this.component.error("error");
