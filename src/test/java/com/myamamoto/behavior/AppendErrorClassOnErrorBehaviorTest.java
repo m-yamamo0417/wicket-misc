@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.myamamoto;
+package com.myamamoto.behavior;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.ComponentTag;
