@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.myamamoto.sample;
+package com.myamamoto.wicket.misc.sample;
 
 import org.apache.wicket.protocol.http.WebApplication;
 

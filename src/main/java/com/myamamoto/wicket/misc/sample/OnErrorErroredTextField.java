@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.myamamoto.sample;
+package com.myamamoto.wicket.misc.sample;
 
-import com.myamamoto.behavior.AppendErrorClassOnErrorBehavior;
+import com.myamamoto.wicket.misc.behavior.AppendErrorClassOnErrorBehavior;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.Model;
 

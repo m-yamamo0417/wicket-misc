@@ -14,17 +14,25 @@
  * limitations under the License.
  */
 
-package com.myamamoto.sample;
+package com.myamamoto.wicket.misc.sample;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.model.Model;
+import com.myamamoto.wicket.misc.behavior.AppendErrorClassOnErrorBehavior;
 
-public class SampleApplicationTest {
+public class SamplePage extends WebPage {
 
-    @Test
-    public void testHomePageIsSamplePage(){
-	SampleApplication app = new SampleApplication();
-	assertEquals(app.getHomePage(), SamplePage.class);
+    public SamplePage() {
     }
+
+    @Override
+    protected void onInitialize() {
+	super.onInitialize();
+	Form<Void> form = new Form<Void>("form1");
+	super.add(form);
+	form.add(new OnErrorErroredTextField("component1", Model.of(0)));
 	
+    }
 }

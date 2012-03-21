@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.myamamoto.behavior;
+package com.myamamoto.wicket.misc.behavior;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;

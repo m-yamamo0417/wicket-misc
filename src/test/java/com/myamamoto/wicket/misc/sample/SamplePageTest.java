@@ -14,21 +14,28 @@
  * limitations under the License.
  */
 
-package com.myamamoto.sample;
+package com.myamamoto.wicket.misc.sample;
 
-import com.myamamoto.behavior.AppendErrorClassOnErrorBehavior;
-import org.apache.wicket.model.Model;
+import com.myamamoto.wicket.misc.behavior.AppendErrorClassOnErrorBehavior;
+import org.apache.wicket.Component;
+import org.apache.wicket.util.tester.WicketTester;
+import org.junit.Before;
 import org.junit.Test;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
-public class OnErrorErroredTextFieldTest {
+public class SamplePageTest {
+    private WicketTester tester;
+
+    @Before
+    public void setUp() {
+	this.tester = new WicketTester();
+	this.tester.startPage(SamplePage.class);
+    }
 
     @Test
-    public void testExistsAppendErrorClassOnErrorBehavior() {
-	OnErrorErroredTextField field = new OnErrorErroredTextField("id",
-								    Model.of(0));
-	assertThat(field.getBehaviors(AppendErrorClassOnErrorBehavior.class).size(),
-		   is(1));
+    public void existsAppendErrorClassOnErrorBehavior() {
+	this.tester.assertComponent("form1:component1",
+				    OnErrorErroredTextField.class);
     }
 }
