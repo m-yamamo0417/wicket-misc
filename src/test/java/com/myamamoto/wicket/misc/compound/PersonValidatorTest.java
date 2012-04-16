@@ -20,11 +20,11 @@ import org.apache.wicket.feedback.FeedbackMessage;
 import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.util.tester.WicketTester;
+import org.apache.wicket.validation.Validatable;
 import org.junit.Before;
 import org.junit.Test;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
-import org.apache.wicket.validation.Validatable;
 
 public class PersonValidatorTest {
     private Validatable<Person> validatable;

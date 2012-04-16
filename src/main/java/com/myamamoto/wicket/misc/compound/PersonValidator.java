@@ -25,10 +25,14 @@ import org.apache.wicket.validation.validator.AbstractValidator;
 import org.apache.wicket.validation.validator.MinimumValidator;
 
 class PersonValidator extends AbstractValidator<Person>{
+    private NotNullValidator<String> nameNotNullValidator;
+    private NotNullValidator<Integer> ageNotNullValidator;
     private CompoundValidator<String> nameValidator;
     private CompoundValidator<Integer> ageValidator;
     
     PersonValidator() {
+	nameNotNullValidator = new NotNullValidator("name");
+	ageNotNullValidator = new NotNullValidator("age");
 	nameValidator = new CompoundValidator<String>();
 	ageValidator = new CompoundValidator<Integer>();
 	ageValidator.add(new MinimumValidator<Integer>(0){
@@ -49,30 +53,18 @@ class PersonValidator extends AbstractValidator<Person>{
     
     protected void onValidate(IValidatable<Person> validatable){
 	Person p = validatable.getValue();
-	if(null == p.getName()){
-	    ValidationError error = new ValidationError();
-	    error.addMessageKey("Required");
-	    error.setVariable("label", "name");
+	Validatable<String> name = new Validatable<String>(p.getName());
+	nameNotNullValidator.validate(name);
+	nameValidator.validate(name);
+	for(IValidationError error: name.getErrors()){
 	    validatable.error(error);
-	}else{
-	    Validatable<String> name = new Validatable<String>(p.getName());
-	    nameValidator.validate(name);
-	    for(IValidationError error: name.getErrors()){
-		validatable.error(error);
-	    }
 	}
 
-	if(null == p.getAge()){
-	    ValidationError error = new ValidationError();
-	    error.addMessageKey("Required");
-	    error.setVariable("label", "age");
+	Validatable<Integer> age = new Validatable<Integer>(p.getAge());
+	ageNotNullValidator.validate(age);
+	ageValidator.validate(age);
+	for(IValidationError error: age.getErrors()){
 	    validatable.error(error);
-	}else{	    
-	    Validatable<Integer> age = new Validatable<Integer>(p.getAge());
-	    ageValidator.validate(age);
-	    for(IValidationError error: age.getErrors()){
-		validatable.error(error);
-	    }
 	}
     }
 }
