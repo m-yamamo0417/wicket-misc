@@ -21,6 +21,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.Model;
 import com.myamamoto.wicket.misc.behavior.AppendErrorClassOnErrorBehavior;
+import org.apache.wicket.markup.html.IHeaderResponse;
 
 public class SamplePage extends WebPage {
 
@@ -34,5 +35,11 @@ public class SamplePage extends WebPage {
 	super.add(form);
 	form.add(new OnErrorErroredTextField("component1", Model.of(0)));
 	
+    }
+
+    @Override
+    public void renderHead(IHeaderResponse response){
+	response.renderJavaScriptReference("/js/kickstart.js");
+	response.renderCSSReference("/css/kickstart.css");
     }
 }

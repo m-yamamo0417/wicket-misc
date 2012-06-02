@@ -4,15 +4,13 @@
       xml:lang="ja" lang="ja">
   <head>
     <title>this is sample page</title>
-    <style type="text/css">
-      .error {
-        background-color: #FCC;
-      }
-    </style>
   </head>
   <body>
-    <form wicket:id="form1">
-      <input type="text" wicket:id="component1"/>
+    <form wicket:id="form1" class="vertical">
+      <div class="col_4">
+	<label for="text1">numbers only</label>
+	<input id="text1" type="text" wicket:id="component1"/>
+      </div>
     </form>
   </body>
 </html>
