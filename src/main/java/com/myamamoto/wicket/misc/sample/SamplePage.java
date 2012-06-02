@@ -16,12 +16,12 @@
 
 package com.myamamoto.wicket.misc.sample;
 
+import com.myamamoto.wicket.misc.behavior.AppendErrorClassOnErrorBehavior;
+import org.apache.wicket.markup.html.IHeaderResponse;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.Model;
-import com.myamamoto.wicket.misc.behavior.AppendErrorClassOnErrorBehavior;
-import org.apache.wicket.markup.html.IHeaderResponse;
 
 public class SamplePage extends WebPage {
 
@@ -34,11 +34,14 @@ public class SamplePage extends WebPage {
 	Form<Void> form = new Form<Void>("form1");
 	super.add(form);
 	form.add(new OnErrorErroredTextField("component1", Model.of(0)));
+	form.add(new JancodeTextField("component2", Model.of("4522646430318")));
 	
     }
 
     @Override
     public void renderHead(IHeaderResponse response){
+	response.renderJavaScriptReference("https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js");
+	response.renderJavaScriptReference("/js/prettify.js");
 	response.renderJavaScriptReference("/js/kickstart.js");
 	response.renderCSSReference("/css/kickstart.css");
     }
