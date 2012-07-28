@@ -22,6 +22,8 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.Model;
+import com.myamamoto.wicket.misc.enums.RockPaperScissorsDropDownChoice;
+import com.myamamoto.wicket.misc.enums.RockPaperScissors;
 
 public class SamplePage extends WebPage {
 
@@ -35,7 +37,8 @@ public class SamplePage extends WebPage {
 	super.add(form);
 	form.add(new OnErrorErroredTextField("component1", Model.of(0)));
 	form.add(new JancodeTextField("component2", Model.of("4522646430318")));
-	
+	form.add(new RockPaperScissorsDropDownChoice("component3",
+						     Model.of(RockPaperScissors.ROCK)));
     }
 
     @Override
